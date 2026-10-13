@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter for You 💌</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #9fc8ed;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 18px;
+  text-align: center;
+  animation: fade 0.5s ease;
+}
+
+.page.active {
+  display: flex;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(23px, 6vw, 34px);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+p {
+  font-size: 12px;
+  line-height: 1.9;
+  max-width: 340px;
+  margin: 0 auto 16px;
+}
+
+.sticker {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: white;
+  padding: 8px;
+  margin-bottom: 14px;
+  border-radius: 4px;
+}
+
+button {
+  background: #ff7895;
+  color: white;
+  border: none;
+  padding: 11px 19px;
+  border-radius: 5px;
+  margin: 5px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #ff5f83;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.letter {
+  background: #ffb0c2;
+  color: white;
+  width: min(100%, 360px);
+  padding: 20px 16px;
+  border: 4px solid white;
+  border-radius: 5px;
+  box-shadow: 0 5px 12px #527da055;
+  text-align: left;
+  margin: 5px auto 15px;
+}
+
+.letter p {
+  max-width: none;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+.memories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 350px);
+  margin: 12px auto 18px;
+}
+
+.memories img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  padding: 5px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px #527da044;
+  transform: rotate(-2deg);
+}
+
+.memories img:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.small {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  animation: floatUp 6s linear forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .letter { padding: 15px 12px; }
+  p { font-size: 11px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1: APOLOGY -->
+<section class="page active" id="page1">
+  <img class="sticker"
+       src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f97a/512.gif"
+       alt="Cute crying face">
+
+  <h1>I'm sorry maira</h1>
+
+  <p>
+    sometimes we hurt the people we love the most.
+    this page is a small way to say, I'm sorry.
+    Hey, do you accept my apology?
+  </p>
+
+  <div class="buttons">
+    <button onclick="showPage('page2')">Yes 💗</button>
+    <button onclick="showPage('page3')">No</button>
+  </div>
+</section>
+
+<!-- PAGE 2: ACCEPTED -->
+<section class="page" id="page2">
+  <img class="sticker"
+       src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f979/512.gif"
+       alt="Cute emotional face">
+
+  <h1>omgg are you sure, maira?</h1>
+  <p>Please stay a little longer. orang ada something nak tunjuk. 🥹</p>
+
+  <button onclick="showPage('page4')">Go back 💌</button>
+</section>
+
+<!-- PAGE 3: NOT YET -->
+<section class="page" id="page3">
+  <img class="sticker"
+       src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f622/512.gif"
+       alt="Sad face">
+
+  <h1>It's okay, mairaa</h1>
+  <p>
+    I understand if you need some time.
+    orang sentiasa ada bila dia dah readyy.
+    Can I try again?
+  </p>
+
+  <div class="buttons">
+    <button onclick="showPage('page2')">Yes</button>
+    <button onclick="showPage('page1')">Not yet</button>
+  </div>
+</section>
+
+<!-- PAGE 4: MEMORIES -->
+<section class="page" id="page4">
+  <h1>your beauty📸</h1>
+
+  <p>
+    gambar gambar yang maira bagi adalah antara gambar favorite orang❤️
+  </p>
+
+  <div class="memories">
+    <!-- Tukar image1.jpg hingga image6.jpg dengan gambar kau -->
+    <img src="image1.jpg" alt="Our memory 1">
+    <img src="image2.jpg" alt="Our memory 2">
+    <img src="image3.jpg" alt="Our memory 3">
+    <img src="image4.jpg" alt="Our memory 4">
+    <img src="image5.jpg" alt="Our memory 5">
+    <img src="image6.jpg" alt="Our memory 6">
+  </div>
+
+  <button onclick="showPage('page5')">Continue 💗</button>
+</section>
+
+<!-- PAGE 5: LETTER COVER -->
+<section class="page" id="page5">
+  <h1>A Letter for You 💌</h1>
+
+  <div class="letter">
+    <p>maira, read this okay? Click ❤️</p>
+    <button onclick="showPage('page6')">❤️</button>
+  </div>
+</section>
+
+<!-- PAGE 6: LETTER -->
+<section class="page" id="page6">
+  <h1>A Letter for You 💌</h1>
+
+  <div class="letter">
+    <p>dear maira,</p>
+
+    <p>
+      orang nak dia tahu yang dia adalah orang yang penting bagi orang.
+    </p>
+
+    <p>
+      With all my love, always.
+      im sorry for the times I made you sad.aku tuduh tuduh kau.
+      I never want you to feel like you're not loved and alone
+    </p>
+
+    <p>
+      orang harap dia tahu yang orang sayangkan dia.. ❤️
+    </p>
+
+    <button onclick="showPage('page7')">Next 💗</button>
+  </div>
+</section>
+
+<!-- PAGE 7: APOLOGY -->
+<section class="page" id="page7">
+  <h1>My Apology</h1>
+
+  <p>
+    orang tahu orang salah and orang harap dia maafkan orang and we fix itt
+  </p>
+
+  <button onclick="showPage('page8')">maafkan aku tauu 🥺</button>
+</section>
+
+<!-- PAGE 8: FINAL -->
+<section class="page" id="page8">
+  <img class="sticker"
+       src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif"
+       alt="Smiling face with hearts">
+
+  <h1>THANKYOU MAIRA COMELL. ❤️</h1>
+
+  <p>
+    apa apa pun jadi orang sentiasa nak dekat dengan dia and orang taknak jadi strangerr
+  </p>
+
+  <button onclick="showPage('page9')">One more chance? 💗</button>
+</section>
+
+<!-- PAGE 9: END -->
+<section class="page" id="page9">
+  <h1>Just for you ❤️</h1>
+
+  <p>
+    walaupun banyak kali orang cakap, orang tak pernah penat untuk cakap yang orang sayangkan dia..
+  </p>
+
+  <button onclick="showPage('page1')">Read again ↺</button>
+  <p class="small">Made with kasih sayang, just for you. 💌</p>
+</section>
+
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  const nextPage = document.getElementById(pageId);
+
+  if (nextPage) {
+    nextPage.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement('span');
+  heart.className = 'heart';
+  heart.textContent = ['💗', '💕', '❤️', '♡'][
+    Math.floor(Math.random() * 4)
+  ];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 1000);
+</script>
+
+</body>
+</html>
